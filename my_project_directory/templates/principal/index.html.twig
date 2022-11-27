@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <h1>Bonjour {% if app.user %}{{ app.user.userIdentifier }} {% else %}anonyme{% endif %}! ✅</h1>
+    
+    {% if app.user %}
+			<div class="mb-3">
+                <a href='{{ path('mon_compte') }}'><button type="button" class"btn btn-primary">Mon compte</button></a><br>
+                <a href='/inscription/{{ app.user.getId }}'><button type="button" class"btn btn-primary">S'inscrire dans des clubs</button></a><br>
+                <a href='{{ path('app_logout') }}'><button type="button" class"btn btn-primary">Déconnexion</button></a><br>
+			</div><br>
+    {% else %}
+        <a href='{{ path('app_login') }}'><button type="button" class"btn btn-primary">Connexion</button></a><br>
+        <a href='{{ path('app_register') }}'><button type="button" class"btn btn-primary">Créer un compte</button></a><br>
+	{% endif %}
+{% endblock %}

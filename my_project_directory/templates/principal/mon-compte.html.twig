@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    Nom d'utilisateur : {{ app.user.userIdentifier }}<br><br>
+    {% if app.user.club!=null %}
+        Vos club :
+            {% for clubs in app.user.club %}
+                <li>{{ clubs.nom }}
+            {% endfor %}
+    {% endif %}
+{% endblock %}
